@@ -240,3 +240,115 @@ This project is for educational and development purposes.
 <img width="1204" height="854" alt="image" src="https://github.com/user-attachments/assets/e3c2d016-4257-4981-a5c5-8edd071fed27" />
 
 
+
+
+> ⚠️ **Important:** Do **NOT** put your real password/host/port in the public README. Use placeholders like `<RAILWAY_HOST>` etc. Your `.env` file should keep the real secrets.
+
+---
+
+## 🔌 Connecting to Railway MySQL with MySQL Workbench
+
+You can inspect and manage the production database (hosted on Railway) using **MySQL Workbench**.
+
+### 1. Prerequisites
+
+* MySQL Workbench installed
+
+  * Download from the official MySQL site.
+* Railway MySQL service already created.
+* Database credentials from Railway:
+
+  * **Host**
+  * **Port**
+  * **Username**
+  * **Password**
+  * **Database name** (e.g. `railway`)
+
+> You can find these in Railway → your MySQL service → **Connect** / **Variables** section.
+
+---
+
+### 2. Create a new connection in MySQL Workbench
+
+1. Open **MySQL Workbench**.
+
+2. On the home screen, under **MySQL Connections**, click the **`+`** icon to add a new connection.
+
+3. Fill in the connection details:
+
+   * **Connection Name:**
+     `Railway MySQL` (or any name you like)
+   * **Connection Method:**
+     `Standard (TCP/IP)`
+   * **Hostname:**
+     `<RAILWAY_HOST>`
+     (example: `yamabiko.proxy.rlwy.net`)
+   * **Port:**
+     `<RAILWAY_PORT>`
+     (example: `34087`)
+   * **Username:**
+     `<RAILWAY_USER>`
+     (often `root` by default)
+   * Click **Store in Vault…** next to *Password* and enter your Railway DB password.
+   * (Optional) **Default Schema:**
+     `<RAILWAY_DATABASE_NAME>`
+     (example: `railway`)
+
+4. Click **Test Connection**:
+
+   * If prompted about SSL, click **OK/Continue**.
+   * You should see a “Successfully made the MySQL connection” message.
+
+5. Click **OK** to save the connection.
+
+---
+
+### 3. Open the connection and select the database
+
+1. On the MySQL Workbench home screen, **double-click** the connection you just created (`Railway MySQL`).
+2. After it opens:
+
+   * On the **left sidebar (SCHEMAS panel)**, find your database (e.g. `railway`).
+   * Right-click it and choose **Set as Default Schema**.
+
+---
+
+### 4. Running SQL queries (example: view & delete users)
+
+1. Click the **“SQL +”** button (or `File → New Query Tab`) to open a new SQL editor tab.
+
+2. Make sure your default schema is selected (shown above the editor, or in the SCHEMAS panel).
+
+3. Now you can run queries like:
+
+   ```sql
+   -- See all tables
+   SHOW TABLES;
+
+   -- Select all users
+   SELECT * FROM users;
+
+   -- Delete a specific user (example: id = 3)
+   DELETE FROM users
+   WHERE id = 3;
+   ```
+
+4. Highlight the query (or keep cursor inside it) and click the **lightning bolt ▶️** button to execute.
+
+> ⚠️ `DELETE` is permanent. Double-check the `WHERE` condition before running.
+
+---
+
+### 5. Mapping to backend configuration
+
+In your backend, the database connection is configured via `DATABASE_URL` in `.env`, for example:
+
+```env
+DATABASE_URL=mysql+mysqlconnector://<RAILWAY_USER>:<RAILWAY_PASSWORD>@<RAILWAY_HOST>:<RAILWAY_PORT>/<RAILWAY_DATABASE_NAME>
+```
+
+This should match the same host, port, user, password, and database name you used in MySQL Workbench.
+
+---
+
+
