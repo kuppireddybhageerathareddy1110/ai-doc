@@ -11,3 +11,5 @@ mysql-connector-python
 requests
 email-validator
 pydantic[email]
+passlib[bcrypt]
+argon2_cffi
