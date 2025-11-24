@@ -27,7 +27,7 @@ Fully deployed using:
 
 ### 🔹 Frontend (Vercel)
 
-👉 **[https://your-frontend-domain.vercel.app](https://your-frontend-domain.vercel.app)**
+👉 **[https://ai-doc-2kvz.vercel.app/](https://ai-doc-2kvz.vercel.app/)**
 
 ### 🔹 Backend (Render)
 
@@ -238,4 +238,5 @@ This project is for educational and development purposes.
 
 <img width="1459" height="606" alt="image" src="https://github.com/user-attachments/assets/eae73e6a-1cdb-4baa-8709-1a8ce03b916f" />
 <img width="1204" height="854" alt="image" src="https://github.com/user-attachments/assets/e3c2d016-4257-4981-a5c5-8edd071fed27" />
+
 
