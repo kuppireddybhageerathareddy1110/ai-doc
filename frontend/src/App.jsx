@@ -1,7 +1,8 @@
 // frontend/src/App.jsx
 import React, { useEffect, useState } from "react";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = import.meta.env.VITE_API_URL;
+
 
 function App() {
   const [page, setPage] = useState("auth"); // 'auth' | 'dashboard' | 'project' | 'editor'
