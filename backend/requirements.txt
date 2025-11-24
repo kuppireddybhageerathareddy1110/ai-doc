@@ -9,3 +9,5 @@ python-docx
 python-pptx
 mysql-connector-python
 requests
+email-validator
+pydantic[email]
