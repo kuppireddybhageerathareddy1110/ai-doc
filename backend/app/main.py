@@ -21,17 +21,38 @@ app = FastAPI(title="AI-Assisted Document Authoring Platform")
 # =========================================================
 # 2️⃣  CORS MUST COME IMMEDIATELY AFTER APP CREATION
 # =========================================================
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+# origins = [
+#     "http://localhost:5173",
+#     "http://127.0.0.1:5173",
+# ]
+
+origins = ["*"]
+# origins = [
+#     "http://localhost:5173",
+#     "http://127.0.0.1:5173",
+
+#     # Your deployed frontend domain (Vercel)
+#     "https://ai-doc.vercel.app",          # <--- replace with your actual Vercel domain
+
+#     # Your backend Render domain
+#     "https://ai-doc-ss1m.onrender.com",
+# ]
+
+
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],          # Allow all origins
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],          # Allow all methods (GET, POST, PUT, DELETE, OPTIONS)
+    allow_headers=["*"],          # Allow all headers (including Authorization)
 )
 
 
